@@ -1,0 +1,65 @@
+# config file for HermesMQTT template skill.
+#
+# Syntax:
+# + Sections for skill-wide settinge in  [global]
+# + Settings for language xy in [xy] (always 2-letter-code)
+#
+# + each line is name and a list of values (1 or more): 
+#   name = value
+#   name = value, value, value
+# + spaces around '=' and ',' are allowed but stripped
+# + 'name' may contain letters, digits and some special charaters, 
+#    including : / < >
+#
+# + all config.ini files are read when HermesMQTT starts;
+#   after changes a restart is necessary.
+
+# global settings for all skills go in the section [global]:
+# BUT: skill-limited sctions are not yet supported
+#      (maybe not neeeded?)
+#
+[global]
+this_skill_name = SusiRoller
+
+# each roller ist definded by a unique name (id),
+# a line with driver and params and
+# positions in percents for open, half and closed:
+#
+devices = roller_big, roller_small, roller_kitchen
+
+roller_big:driver = shelly2.5, 192.168.0.100, rhasspy, my_passwd
+roller_big:positions = 100, 48, 0
+roller_big:room = livingroom
+
+roller_small:driver = shelly2.5, 192.168.0.101, rhasspy, my_passwd
+roller_small:positions = 100, 60, 0
+roller_small:room = livingroom
+
+roller_kitchen:driver = shelly2.5, 192.168.0.102, rhasspy, my_passwd
+roller_kitchen:positions = 100, 50, 0
+roller_kitchen:room = kitchen
+
+
+
+# These sections are for sentences and sentence snippets
+# for each supported language.
+# In the skill-action code these can be accessed such as:
+# publish_say(:skill_echo, "my new skill")
+#
+[de]
+:i_open_rollers = Ich öffne die Rollläden im Raum
+:i_close_rollers = Ich schließe die Rollläden im Raum
+:no_rollers = Ich habe keine Rollläden gefunden im Raum
+:could_not_move_roller = Ich konnte den Rollladen nicht bewegen im Raum
+
+[en]
+:i_open_rollers = I open the roller shutters in room
+:i_close_rollers = I close the roller shutters in room
+:no_rollers = No roller shutters found in room
+:could_not_move_roller = I could not move the roller shutter in room
+
+[fr]
+:i_open_rollers = Je ouvre les volets roulants dans la pièce
+:i_close_rollers = Je ferme les volets roulants dans la pièce
+:no_rollers = Je n ai pas trouvé de volets roulants dans la pièce
+:could_not_move_roller = Je n ai pas pu déplacer le volet roulant dans la pièce
