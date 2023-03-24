@@ -1,6 +1,6 @@
 # SusiRoller - Snips/Rhasspy Skill
 
-Simple skill to roller shutters up and down with voice commands with a
+Simple skill to move roller shutters up and down with voice commands with a
 Snips-like home assistant (i.e. Rhasspy).     
 The skill is written in Julia with the HermesMQTT.jl framework.
 
@@ -90,7 +90,7 @@ roller_big:positions = 100, 48, 0
 roller_big:room = livingroom
 
 roller_small:driver = shelly2.5, 192.168.0.101, rhasspy, my_passwd
-roller_small:positions = 100, 60, 0
+roller_small:positions = 80, 60, 10
 roller_small:room = livingroom
 
 roller_kitchen:driver = shelly2.5, 192.168.0.102, rhasspy, my_passwd
@@ -106,7 +106,7 @@ Only Shelly 2.5 actors are supported at the moment.
 
 ### Other drivers
 
-Other hardware drivers may be added easily as log as they can be 
+Other hardware drivers may be added easily as long as they can be 
 controlled via http or MQTT requests. 
 
 Because the shelly devices are are low-price, easy to use and 
