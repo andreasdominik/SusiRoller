@@ -18,8 +18,7 @@
 """
     Susi_RollerUpDown_action(topic, payload)
 
-Generated dummy action for the intent Susi:RollerUpDown.
-This function will be executed when the intent is recognized.
+Move all rollers in a room up or down.
 """
 function Susi_RollerUpDown_action(topic, payload)
 
@@ -46,14 +45,36 @@ end
 """
     Susi_RollerHalf_action(topic, payload)
 
-Generated dummy action for the intent Susi:RollerHalf.
-This function will be executed when the intent is recognized.
+Move all rollers in a room to half position.
 """
 function Susi_RollerHalf_action(topic, payload)
 
     print_log("action Susi_RollerHalf_action() started.")
 
     move_roller(payload, :half)
+
+    publish_end_session("")
+    return true
+end
+
+
+"""
+    Susi_RollerAll_action(topic, payload)
+
+Move all rollers in a house up or down.
+"""
+function Susi_RollerAll_action(topic, payload)
+
+    print_log("action Susi_RollerAll_action() started.")
+
+    action = extract_slot_value(SLOT_ACTION, payload, default="close")
+
+    if action == "open"
+        ac = :open
+    else
+        ac = :close
+    end
+    move_all_rollers(payload, ac)
 
     publish_end_session("")
     return true

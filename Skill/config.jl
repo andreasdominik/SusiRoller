@@ -31,3 +31,4 @@ ROLLERS = "devices"
 # register_on_off_action(TEMPLATE_INTENT_action)
 register_intent_action("Susi:RollerUpDown", Susi_RollerUpDown_action)
 register_intent_action("Susi:RollerHalf", Susi_RollerHalf_action)
+register_intent_action("Susi:RollerAll", Susi_RollerAll_action)
