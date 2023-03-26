@@ -64,6 +64,7 @@ function move_one_roller(roller, action)
     # get postition in prercent from config.ini:
     #
     positions = get_config("positions", one_prefix=roller, multiple=true)
+    room = get_config("room", one_prefix=roller)
 
     if length(positions) == 3
         pos_open = positions[1]
