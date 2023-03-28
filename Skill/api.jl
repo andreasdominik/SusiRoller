@@ -78,13 +78,13 @@ function move_one_roller(roller, action)
 
     if action == :open
         pos = pos_open
-        say = :i_open_rollers
+        say = :i_open_one_roller
     elseif action == :half
         pos = pos_half
-        say = :i_close_rollers
+        say = :i_close_one_roller
     else
         pos = pos_close
-        say = :i_close_rollers
+        say = :i_close_one_roller
     end
 
 
@@ -112,9 +112,9 @@ function move_one_roller(roller, action)
 
             if move_shelly_25_roller(ip, :to_pos, pos=pos, 
                         user=user, password=password)
-                publish_say(say, room)
+                publish_say(say, Symbol(roller), :in_room, room)
             else
-                publish_say(:could_not_move_roller, room)
+                publish_say(:could_not_move_roller, room, Symbol(roller))
             end
         else
             print_log("Unknown driver $(driver[1]) for roller $roller.")
