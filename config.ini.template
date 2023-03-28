@@ -49,17 +49,43 @@ roller_kitchen:room = kitchen
 [de]
 :i_open_rollers = Ich öffne die Rollläden im Raum
 :i_close_rollers = Ich schließe die Rollläden im Raum
+:i_open_one_roller = Ich öffne den Rollladen 
+:in_room = im Raum
+:i_close_one_roller = Ich schließe den Rollladen
+
+:roller_big = am großen Fenster
+:roller_small = im Eck
+
 :no_rollers = Ich habe keine Rollläden gefunden im Raum
+:no_rollers_in_house = Es gibt im ganzen Haus keine Rollläden
 :could_not_move_roller = Ich konnte den Rollladen nicht bewegen im Raum
 
 [en]
 :i_open_rollers = I open the roller shutters in room
 :i_close_rollers = I close the roller shutters in room
+:i_open_one_roller = I open the roller shutter
+:in_room = in room
+:i_close_one_roller = I close the roller shutter
+
+:roller_big = at the big window
+:roller_small = in the corner
+
 :no_rollers = No roller shutters found in room
+:no_rollers_in_house = There are no roller shutters in the whole house
 :could_not_move_roller = I could not move the roller shutter in room
 
 [fr]
 :i_open_rollers = Je ouvre les volets roulants dans la pièce
 :i_close_rollers = Je ferme les volets roulants dans la pièce
+:i_open_one_roller = Je ouvre le volet roulant
+:in_room = dans la pièce
+:i_close_one_roller = Je ferme le volet roulant
+
+:roller_big = à la grande fenêtre
+:roller_small = dans le coin
+
 :no_rollers = Je n ai pas trouvé de volets roulants dans la pièce
+:no_rollers_in_house = Il n y a pas de volets roulants dans toute la maison
 :could_not_move_roller = Je n ai pas pu déplacer le volet roulant dans la pièce
+
+
