@@ -40,6 +40,24 @@ Basic idea is to configure roller shutters in different rooms of the house
 in the config.ini file. 
 Then the skill can be used to move the rollers in a room by voice command.
 
+### Sun protection
+
+A special case is sun protection. If the command includes a phrase such as
+*"only if the sun shines"*
+then sun protection mode is activated. In this case the roller will be moved
+to the half-open position as defined in the config.ini file.
+
+If a weather service is configured in the *HermesMQTT* framework, the skill
+will check the cloud cover and the time of sunset. If the cloud cover is
+below a certain threshold (default 60%) and the sunset is more than x minutes
+in the future (default 30 minutes), the roller will be moved to the half-open
+position. Otherwise the roller will be moved to the opened position.
+
+Sun protection may be scheduled with the *SusiScheduler* skill by
+executing a 
+*"Close the roller in the livingroom only if the sun is shining"* command
+every 15 minutes.
+
 
 
 ## Device definitions
@@ -96,6 +114,10 @@ roller_small:room = livingroom
 roller_kitchen:driver = shelly2.5, 192.168.0.102, rhasspy, my_passwd
 roller_kitchen:positions = 100, 50, 0
 roller_kitchen:room = kitchen
+
+
+cloud_limit = 60
+mins_before_sunset = 30
 ```
 
 ## Drivers
