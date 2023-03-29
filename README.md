@@ -53,7 +53,7 @@ below a certain threshold (default 60%) and the sunset is more than x minutes
 in the future (default 30 minutes), the roller will be moved to the half-open
 position. Otherwise the roller will be moved to the opened position.
 
-Sun protection may be scheduled with the *SusiScheduler* skill by
+Sun protection may be scheduled with the *SusiWeekly* skill by
 executing a 
 *"Close the roller in the livingroom only if the sun is shining"* command
 every 15 minutes.
