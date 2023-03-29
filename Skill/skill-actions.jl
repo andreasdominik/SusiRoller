@@ -79,3 +79,30 @@ function Susi_RollerAll_action(topic, payload)
     publish_end_session("")
     return true
 end
+
+
+
+
+"""
+    Susi_RollerSun_action(topic, payload)
+
+Close rolles half for sun protection only if it is sunny.
+And adds an entry to the schdule db to check every 15 minutes and
+open or close.
+The entry is removed be the open-action.
+"""
+function Susi_RollerSun_action(topic, payload)
+
+    print_log("action Susi_RollerSun_action() started.")
+
+    ac = :half
+
+    # check if it is sunny:
+    #
+    move_roller_sunny(payload, ac)
+
+    publish_end_session("")
+    return true
+end
+
+

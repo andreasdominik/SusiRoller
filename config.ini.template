@@ -40,6 +40,14 @@ roller_kitchen:positions = 100, 50, 0
 roller_kitchen:room = kitchen
 
 
+# params for sun protection function:
+# rollers are closed for sun protection to "half" position as defined
+# above - but ONLY if:
+# + actual cloud coverage < cloud_limit
+#
+cloud_limit = 60
+mins_before_sunset = 30
+
 
 # These sections are for sentences and sentence snippets
 # for each supported language.

@@ -5,21 +5,10 @@
 
 function move_roller(payload, action)
 
-    # get the slot values:
-    #
-    room = extract_slot_value(SLOT_ROOM, payload, default=get_siteID(payload))
 
     # find rollers in the room:
     #
-    devices = get_config(ROLLERS, multiple=true)
-
-    rollers = []
-    for device in devices
-        r = get_config("room", one_prefix=device)
-        if r == room
-            push!(rollers, device)
-        end
-    end
+    rollers = match_rollers(payload)
 
     if length(rollers) == 0
         publish_say(:no_rollers, room)
@@ -34,11 +23,70 @@ function move_roller(payload, action)
         move_one_roller(roller, action)
     end
 end
+    
+function match_rollers(payload)
+
+    # get the slot values:
+    #
+    room = extract_slot_value(SLOT_ROOM, payload, default=get_siteID(payload))
+    devices = get_config(INI_ROLLERS, multiple=true)
+
+    rollers = []
+    for device in devices
+        r = get_config("room", one_prefix=device)
+        if r == room
+            push!(rollers, device)
+        end
+    end
+    return rollers
+end
+
+
+function move_roller_sunny(payload, action)
+
+    cloud_limit = get_config(INI_CLOUDY)
+    cloud_limit = tryparse(Int, cloud_limit)
+    if isnothing(cloud_limit)
+        cloud_limit = 60
+    end
+
+    pre_sunset = get_config(INI_SUNSET_PRE)
+    pre_sunset = tryparse(Int, pre_sunset)
+    if isnothing(pre_sunset)
+        pre_sunset = 30
+    end
+
+    # no sun protection if cloudy:
+    #
+    w = get_weather()
+    if !isnothing(w) && w[:clouds] > cloud_limit
+        sunny = false
+    else
+        sunny = true
+    end
+
+    # no sun protection if it is already close to sunset:
+    #
+    if !isnothing(w)
+        if w[:sunset] - Dates.Minute(pre_sunset) < Dates.now()
+            sunny = false
+        end
+    end
+
+    if sunny
+        move_roller(payload, action)
+    else
+        move_roller(payload, :open)
+    end
+end
+
+
+
 
 
 function move_all_rollers(payload, action)
 
-    rollers = get_config(ROLLERS, multiple=true)
+    rollers = get_config(INI_ROLLERS, multiple=true)
 
     if length(rollers) == 0
         publish_say(:no_rollers_in_house)

@@ -21,7 +21,9 @@ const SLOT_ROOM = "room"
 
 # name of entries in config.ini:
 #
-ROLLERS = "devices"
+INI_ROLLERS = "devices"
+INI_SUNSET_PRE = "mins_before_sunset"
+INI_CLOUDY = "cloud_limit"
 
 #
 # link between actions and intents:
@@ -32,3 +34,4 @@ ROLLERS = "devices"
 register_intent_action("Susi:RollerUpDown", Susi_RollerUpDown_action)
 register_intent_action("Susi:RollerHalf", Susi_RollerHalf_action)
 register_intent_action("Susi:RollerAll", Susi_RollerAll_action)
+register_intent_action("Susi:RollerSunprotection", Susi_RollerSun_action)
