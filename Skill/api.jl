@@ -8,7 +8,7 @@ function move_roller(payload, action)
 
     # find rollers in the room:
     #
-    rollers = match_rollers(payload)
+    rollers, room = match_rollers(payload)
 
     if length(rollers) == 0
         publish_say(:no_rollers, room)
@@ -38,7 +38,7 @@ function match_rollers(payload)
             push!(rollers, device)
         end
     end
-    return rollers
+    return rollers, room
 end
 
 
