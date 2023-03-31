@@ -61,6 +61,7 @@ function move_roller_sunny(payload, action)
     w = get_weather()
     if !isnothing(w) && w[:clouds] > cloud_limit
         sunny = false
+        print_log("Cloudy, no sun protection.")
     else
         sunny = true
     end
@@ -70,10 +71,12 @@ function move_roller_sunny(payload, action)
     if !isnothing(w)
         if w[:sunset] - Dates.Minute(pre_sunset) < Dates.now()
             sunny = false
+            print_log("Close to sunset, no sun protection.")
         end
     end
 
     if sunny
+        print_log("Sunny, sun protection.")
         move_roller(payload, action)
     else
         move_roller(payload, :open)
