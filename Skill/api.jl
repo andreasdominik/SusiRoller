@@ -44,17 +44,8 @@ end
 
 function move_roller_sunny(payload, action)
 
-    cloud_limit = get_config(INI_CLOUDY)
-    cloud_limit = tryparse(Int, cloud_limit)
-    if isnothing(cloud_limit)
-        cloud_limit = 60
-    end
-
-    pre_sunset = get_config(INI_SUNSET_PRE)
-    pre_sunset = tryparse(Int, pre_sunset)
-    if isnothing(pre_sunset)
-        pre_sunset = 30
-    end
+    cloud_limit = get_config(INI_CLOUDY, cast_to=Int, default=60)
+    pre_sunset = get_config(INI_SUNSET_PRE, cast_to=Int, default=30)
 
     # no sun protection if cloudy:
     #
