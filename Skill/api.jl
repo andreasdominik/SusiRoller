@@ -50,12 +50,15 @@ function move_roller_sunny(payload, action)
     # no sun protection if cloudy:
     #
     w = get_weather()
+
+println("weather: $w")
+
+    sunny = true
     if !isnothing(w) && w[:clouds] > cloud_limit
         sunny = false
         print_log("Cloudy, no sun protection.")
-    else
-        sunny = true
     end
+println("sunny: $sunny")
 
     # no sun protection if it is already close to sunset:
     #
@@ -65,6 +68,7 @@ function move_roller_sunny(payload, action)
             print_log("Close to sunset, no sun protection.")
         end
     end
+println("sunny: $sunny")
 
     if sunny
         print_log("Sunny, sun protection.")
