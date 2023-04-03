@@ -58,9 +58,6 @@ println("weather: $w")
         sunny = false
         print_log("Cloudy, no sun protection.")
     end
-    #println("sunny: $sunny")
-    #println("sunset: $(w[:sunset]), pre_sunset: $pre_sunset")
-    #println(w[:sunset] - Dates.Minute(pre_sunset))
 
     # no sun protection if it is already close to sunset:
     #
