@@ -59,16 +59,17 @@ println("weather: $w")
         print_log("Cloudy, no sun protection.")
     end
 println("sunny: $sunny")
+println("sunset: $(w[:sunset])")
 
     # no sun protection if it is already close to sunset:
     #
     if !isnothing(w)
-        if w[:sunset] - Dates.Minute(pre_sunset) < Dates.now()
-            sunny = false
-            print_log("Close to sunset, no sun protection.")
-        end
+    #    if w[:sunset] - Dates.Minute(pre_sunset) < Dates.now()
+    #        sunny = false
+    #        print_log("Close to sunset, no sun protection.")
+    #    end
     end
-println("sunny: $sunny")
+println("sunny2: $sunny")
 
     if sunny
         print_log("Sunny, sun protection.")
