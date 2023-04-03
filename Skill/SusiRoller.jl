@@ -19,6 +19,8 @@ SKILL_INTENT_ACTIONS = Tuple{AbstractString, AbstractString,
                              Module, Function}[]
 
 using HermesMQTT
+using Dates
+
 Susi = HermesMQTT
 
 Susi.load_skill_config(APP_DIR, skill=APP_NAME)
